@@ -1,418 +1,247 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>5C Through Leadership Lens</title>
+<title>5C Compassion in Action · Leader Response Studio</title>
 <style>
-:root {
-  --ink:#202124;
-  --muted:#686c72;
-  --line:#e5e7e9;
-  --red:#EB140A;
-  --orange:#FF6A00;
-  --purple:#7A126B;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  background:#f3f4f5;
-  color:var(--ink);
-  font-family:"Segoe UI",Arial,sans-serif;
-  line-height:1.55;
-}
-.page { max-width:1000px; margin:auto; padding:30px 20px 50px; }
-.topline {
-  display:flex; justify-content:space-between; align-items:center;
-  gap:12px; margin-bottom:22px;
-}
-.brand {
-  font-size:12px; font-weight:700; letter-spacing:.12em;
-  text-transform:uppercase; color:#70747a;
-}
-.pill {
-  font-size:12px; border:1px solid var(--line);
-  border-radius:99px; padding:6px 12px; background:white;
-}
-.hero {
-  background:white; border:1px solid var(--line);
-  border-radius:20px; padding:32px; margin-bottom:26px;
-}
-.eyebrow {
-  color:var(--purple); font-size:11px; font-weight:800;
-  letter-spacing:.15em; text-transform:uppercase; margin-bottom:10px;
-}
-h1 {
-  font-size:clamp(30px,4vw,42px); line-height:1.15;
-  letter-spacing:-.04em; margin:0 0 12px;
-}
-.intro { max-width:760px; color:var(--muted); font-size:14px; margin:0; }
-.meta {
-  display:flex; align-items:center; flex-wrap:wrap;
-  gap:16px; margin-top:24px;
-}
-.leader-select { display:flex; align-items:center; gap:9px; font-size:13px; }
-select {
-  background:white; border:1px solid #d7dade; border-radius:8px;
-  padding:9px 12px; font:inherit;
-}
-.progress { display:flex; align-items:center; gap:10px; margin-left:auto; }
-.progress-label { font-size:12px; color:var(--muted); white-space:nowrap; }
-.track { width:110px; height:5px; background:#e8e9eb; border-radius:9px; overflow:hidden; }
-.fill { width:0; height:100%; background:var(--purple); transition:width .2s; }
-.section-head {
-  display:flex; justify-content:space-between; align-items:baseline;
-  gap:12px; margin:28px 2px 12px;
-}
-.section-head h2 { margin:0; font-size:18px; }
-.section-head p { margin:0; font-size:12px; color:#777b80; }
-.card {
-  background:white; border:1px solid var(--line);
-  border-radius:17px; padding:26px; margin-bottom:14px;
-}
-.card-top {
-  display:flex; justify-content:space-between; align-items:center;
-  gap:12px; margin-bottom:20px;
-}
-.c-name { font-size:12px; font-weight:800; letter-spacing:.13em; }
-.communication { color:var(--red); }
-.collaboration { color:var(--orange); }
-.compassion-skill { color:var(--purple); }
-.state {
-  font-size:11px; color:#777b80; border:1px solid var(--line);
-  border-radius:99px; padding:5px 9px; white-space:nowrap;
-}
-.state.done { color:#267445; background:#f4fbf6; border-color:#cce6d5; }
-.label {
-  color:#85898e; font-size:10px; font-weight:800;
-  letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px;
-}
-.question {
-  font-size:19px; font-weight:650; line-height:1.45;
-  letter-spacing:-.02em; margin:0 0 22px;
-}
-.prompt { font-size:14px; font-weight:700; margin:0 0 5px; }
-.guide { color:var(--muted); font-size:14px; margin:0 0 20px; }
-.answers {
-  background:#f8f8f9; border:1px solid #eceef0;
-  border-radius:12px; padding:15px; margin-bottom:20px;
-}
-.answers-head {
-  display:flex; justify-content:space-between; flex-wrap:wrap;
-  gap:6px; margin-bottom:11px;
-}
-.answers-title {
-  font-size:11px; font-weight:800; letter-spacing:.08em;
-  text-transform:uppercase; color:#656970;
-}
-.answers-note,.own-approach { color:#85898e; font-size:11px; }
-.option {
-  background:white; border:1px solid #e5e7e9;
-  border-radius:9px; padding:12px 14px; margin-top:8px;
-}
-.option strong { display:block; font-size:11px; color:#777b80; margin-bottom:4px; }
-.option p { font-size:13px; line-height:1.6; margin:0; }
-.own-approach { margin:10px 2px 0; }
-.recording { border-top:1px solid #eceef0; padding-top:18px; }
-.recording-head {
-  display:flex; justify-content:space-between; flex-wrap:wrap;
-  gap:8px; margin-bottom:12px;
-}
-.recording-head strong { font-size:13px; }
-.recording-head span { font-size:11px; color:#777b80; }
-.controls { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
-button {
-  font:600 12px "Segoe UI",Arial,sans-serif; cursor:pointer;
-  border:1px solid #d9dcdf; border-radius:8px;
-  background:white; color:#303338; padding:9px 12px;
-}
-button:hover:not(:disabled) { background:#f4f5f6; }
-button.primary { color:white; background:#202124; border-color:#202124; }
-button.record { color:#a51b16; border-color:#e8c6c4; }
-button.record.recording { color:white; background:#c52b24; border-color:#c52b24; }
-button:disabled { opacity:.4; cursor:not-allowed; }
-.timer { min-width:42px; font-size:12px; color:#777b80; font-variant-numeric:tabular-nums; }
-.audio-area { margin-top:12px; }
-audio { display:block; width:100%; height:38px; }
-.placeholder {
-  border:1px dashed #dfe1e3; background:#f7f8f9;
-  border-radius:8px; color:#92969b; font-size:12px; padding:11px 13px;
-}
-.status { min-height:16px; margin-top:7px; color:#777b80; font-size:11px; }
-.footer { text-align:center; color:#8b8f94; font-size:11px; padding-top:18px; }
-@media(max-width:620px) {
-  .page { padding:16px 11px 30px; }
-  .hero { padding:23px 19px; }
-  .card { padding:20px 16px; }
-  .question { font-size:17px; }
-  .progress { width:100%; margin-left:0; }
-  .track { flex:1; }
-  .section-head { align-items:flex-start; flex-direction:column; }
-}
+:root{--ink:#202124;--muted:#686c72;--line:#e5e7e9;--purple:#7A126B;--red:#EB140A;--orange:#FF6A00;--blue:#3E8DDD;--green:#6AC346}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#f7f5f9 0,#f4f5f7 390px,#f6f7f8 100%);color:var(--ink);font-family:"Segoe UI",Arial,sans-serif;line-height:1.6}
+.page{max-width:1020px;margin:auto;padding:28px 20px 48px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+.brand{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#737078}
+.pill{font-size:11px;border:1px solid var(--line);border-radius:99px;padding:6px 11px;background:#fff;color:#5f6066}
+.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#fff 0%,#fff 66%,#f3eaf5 100%);border:1px solid #e7e0ea;border-radius:24px;padding:34px 36px 28px;margin-bottom:28px;box-shadow:0 12px 34px rgba(43,26,54,.045)}
+.hero:after{content:"5C";position:absolute;right:30px;top:18px;font-size:104px;line-height:1;font-weight:800;letter-spacing:-.09em;color:rgba(122,18,107,.055);pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.eyebrow{color:var(--purple);font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:clamp(29px,4vw,41px);line-height:1.13;letter-spacing:-.045em;margin:0 0 13px;max-width:650px}
+.intro{max-width:740px;color:var(--muted);font-size:14px;margin:0}
+.steps{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}
+.step{display:flex;align-items:center;gap:7px;background:#faf9fb;border:1px solid #eee9f0;border-radius:99px;padding:6px 10px;color:#55515a;font-size:11px}
+.step b{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;background:#eee3f0;border-radius:50%;color:var(--purple);font-size:10px}
+.meta{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-top:25px;padding-top:21px;border-top:1px solid #eee9f0}
+.leader-select{display:flex;flex-direction:column;gap:6px;font-size:11px;color:#6e7075;font-weight:700;min-width:min(100%,330px)}
+select{background:#fff;border:1px solid #d7dade;border-radius:10px;padding:11px 13px;font:500 14px "Segoe UI",Arial,sans-serif;color:var(--ink);min-width:300px;max-width:100%;outline-color:var(--purple)}
+.leader-info{flex:1;min-width:200px;padding-bottom:2px}
+.leader-name{font-size:15px;font-weight:750;letter-spacing:-.01em}
+.leader-role{font-size:12px;color:var(--muted);margin-top:2px}
+.progress{display:flex;align-items:center;gap:10px;margin-left:auto;padding-bottom:4px}
+.progress-label{font-size:11px;color:var(--muted);white-space:nowrap}
+.track{width:95px;height:5px;background:#e8e8eb;border-radius:9px;overflow:hidden}
+.fill{width:0;height:100%;background:var(--purple);transition:width .2s}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 2px 13px}
+.section-head h2{margin:0;font-size:18px;letter-spacing:-.02em}
+.section-head p{margin:0;font-size:11px;color:#777b80}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px 27px;margin-bottom:15px;box-shadow:0 5px 18px rgba(24,24,32,.025)}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+.c-name{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.c-dot{width:9px;height:9px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 12%,white)}
+.communication{color:var(--red)}.collaboration{color:var(--orange)}.creativity{color:var(--blue)}.curiosity{color:var(--green)}.compassion{color:var(--purple)}
+.state{font-size:10px;color:#777b80;border:1px solid var(--line);border-radius:99px;padding:5px 9px;white-space:nowrap}
+.state.done{color:#267445;background:#f4fbf6;border-color:#cce6d5}
+.label{color:#85898e;font-size:9px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px}
+.question{font-size:19px;font-weight:650;line-height:1.48;letter-spacing:-.025em;margin:0 0 21px;max-width:850px}
+.prompt{font-size:13px;font-weight:750;margin:0 0 5px}
+.guide{color:var(--muted);font-size:12px;margin:0 0 18px}
+.answers{background:#f8f7f9;border:1px solid #eeebf0;border-radius:14px;padding:15px 16px 14px;margin-bottom:21px}
+.answers-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.answers-title{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#656970}
+.answers-note{font-size:10px;color:#8a858e}
+.option{display:grid;grid-template-columns:28px 1fr;gap:10px;background:#fff;border:1px solid #e9e6eb;border-radius:10px;padding:12px 13px;margin-top:8px}
+.option-letter{display:flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:7px;background:#f0e6f2;color:var(--purple);font-size:12px;font-weight:800}
+.option p{font-size:13px;line-height:1.62;margin:2px 0 0;color:#303136}
+.own-option{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center;border:1px dashed #d9d1dd;border-radius:10px;padding:11px 13px;margin-top:8px;color:#68616d;background:#fcfbfc}
+.own-option p{font-size:12px;margin:0}
+.own-option strong{color:#403944}
+.recording{border-top:1px solid #eeeef0;padding-top:18px}
+.recording-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.recording-head strong{font-size:13px}
+.recording-head span{font-size:10px;color:#777b80}
+.controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+button{font:650 11px "Segoe UI",Arial,sans-serif;cursor:pointer;border:1px solid #d9dcdf;border-radius:9px;background:white;color:#303338;padding:10px 12px;transition:background .15s,border .15s}
+button:hover:not(:disabled){background:#f4f2f6;border-color:#cfc4d3}
+button.primary{color:white;background:#252129;border-color:#252129}
+button.primary:hover:not(:disabled){background:var(--purple);border-color:var(--purple)}
+button.record{color:#a51b16;border-color:#e8c6c4}
+button.record.recording{color:white;background:#c52b24;border-color:#c52b24}
+button:disabled{opacity:.4;cursor:not-allowed}
+.timer{min-width:42px;font-size:11px;color:#777b80;font-variant-numeric:tabular-nums}
+.audio-area{margin-top:12px}
+audio{display:block;width:100%;height:38px}
+.placeholder{border:1px dashed #dfe1e3;background:#fafafa;border-radius:9px;color:#92969b;font-size:11px;padding:11px 13px}
+.status{min-height:16px;margin-top:7px;color:#777b80;font-size:10px}
+.bulk{display:flex;align-items:center;flex-wrap:wrap;gap:12px;background:#fff;border:1px solid #e7e0ea;border-radius:15px;padding:15px 17px;margin:0 0 14px}
+.bulk-copy{flex:1;min-width:210px}
+.bulk-copy strong{display:block;font-size:12px}
+.bulk-copy span{display:block;font-size:10px;color:#777b80;margin-top:2px}
+.bulk button{background:var(--purple);color:white;border-color:var(--purple);padding:11px 15px}
+.bulk button:hover:not(:disabled){background:#5f0e54}
+.bulk button:disabled{background:#aaa2ac;border-color:#aaa2ac}
+.bulk-status{width:100%;font-size:10px;color:#777b80}
+.upload-note{background:#f3edf5;border:1px solid #e8ddeb;border-radius:13px;padding:13px 16px;margin:0 0 26px;font-size:11px;color:#5f5863;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.upload-note strong{color:#39323e}
+.upload-note a{color:var(--purple);font-weight:750;text-decoration:none;white-space:nowrap}
+.upload-note a:hover{text-decoration:underline}
+.footer{text-align:center;color:#8b8f94;font-size:10px;padding-top:19px}
+@media(max-width:650px){.page{padding:15px 11px 28px}.hero{padding:24px 19px}.hero:after{font-size:76px;right:16px;top:12px}.card{padding:20px 16px}.question{font-size:17px}.progress{width:100%;margin-left:0}.track{flex:1}.section-head{align-items:flex-start;flex-direction:column}.meta{gap:13px}select{min-width:0;width:100%}.leader-select{width:100%}.leader-info{width:100%}.option{grid-template-columns:25px 1fr;padding:11px}.topline{align-items:flex-start}.pill{white-space:nowrap}}
 </style>
 </head>
 <body>
 <div class="page">
   <div class="topline">
-    <div class="brand">CPSD · 5C Through Leadership Lens</div>
+    <div class="brand">CPSD · 5C Compassion in Action</div>
     <div class="pill">Leader Response Studio</div>
   </div>
-
   <section class="hero">
-    <div class="eyebrow">Your voice matters</div>
-    <h1>Respond to what employees are really asking.</h1>
-    
-<p class="intro">
-     As AI continues to shape the way we work, employees may have new questions, concerns, and uncertainties.
-  <br><br>
-  We’d like to invite you to share your perspective on three questions that employees may be asking. This is an opportunity to listen, understand and respond, helping employees feel heard as we navigate AI transformation together.
-  <br><br>
-  For each question, we’ve provided two suggested approaches for reference. Please feel free to use one, make it your own, or share your perspective in your own way, while bringing the corresponding 5C skillsets into your response.
-    </p>
+    <div class="eyebrow">Listen · Understand · Respond</div>
+    <h1>We’d value your perspective.</h1>
+    <p class="intro">As AI continues to shape the way we work, employees may have new questions, concerns, and uncertainties. We’d like to invite you to respond to three questions employees may be asking. Your perspective can help employees feel heard as we navigate change together.<br><br>For each question, you’ll find two suggested responses for reference. You can use A or B, adapt them in your own way, or share your own thoughts. Please keep each audio file under one minute.</p>
+    <div class="steps"><span class="step"><b>1</b> Choose a response</span><span class="step"><b>2</b> Record audio</span><span class="step"><b>3</b> Download & upload</span></div>
     <div class="meta">
-      <label class="leader-select">Leader
-        <select id="leaderSelect">
-          <option value="akihisa-iwakawa">Akihisa Iwakawa</option>
-        </select>
+      <label class="leader-select">SELECT YOUR NAME
+        <select id="leaderSelect" aria-label="Select your name"></select>
       </label>
-      <div class="progress">
-        <span class="progress-label" id="progressLabel">0 of 3 recorded</span>
-        <div class="track"><div class="fill" id="progressFill"></div></div>
-      </div>
+      <div class="leader-info"><div class="leader-name" id="leaderName"></div><div class="leader-role" id="leaderRole"></div></div>
+      <div class="progress"><span class="progress-label" id="progressLabel">0 of 3 recorded</span><div class="track"><div class="fill" id="progressFill"></div></div></div>
     </div>
   </section>
-
-  <div class="section-head">
-    <h2>Your three assigned questions</h2>
-    <p>Record, listen back, and re-record if needed.</p>
+  <div class="section-head"><h2>Your three assigned questions</h2><p>Record, listen back, and re-record if needed.</p></div>
+  <div class="bulk">
+    <div class="bulk-copy"><strong>Download all your recordings</strong><span>Pack every recording ready for this leader into one ZIP file.</span></div>
+    <button id="downloadAll" disabled>↓ Download all audio (.zip)</button>
+    <div class="bulk-status" id="bulkStatus" aria-live="polite"></div>
   </div>
+  <div class="upload-note"><span><strong>Downloaded your recordings?</strong> Please upload your audio files to the shared folder.</span><a href="https://lenovo.sharepoint.com/:f:/r/sites/CPSD5Ccascading/Shared%20Documents/Material%20Preparation/Promotion%20meterials/Compassion%20in%20action_Voice%20collection?d=w67d20b08eb1e4d3a9576c65d4500a08a&amp;csf=1&amp;web=1&amp;e=ph6Mu5" target="_blank" rel="noopener noreferrer">↗ Open upload folder</a></div>
   <main id="questions"></main>
   <div class="footer">5C · Create clarity. Work together. Keep learning. Lead with empathy.</div>
 </div>
-
 <script>
-const QUESTIONS = [
-  {
-    id: "communication",
-    number: "01",
-    className: "communication",
-    name: "Communication",
-    question: "There’s more information than ever, priorities keep changing. When everyone says their work is important, should I just follow the loudest voice? How do I know what actually matters—and what I should focus on?",
-    guide: "You may want to consider how understanding the “why” behind the work can help clarify priorities.",
-    answer1: "No, definitely not. When everything feels urgent, understanding why something matters helps us see the bigger picture and decide where to put our energy.",
-    answer2: "No. Before deciding what to focus on, I think it's important to understand the purpose behind the work. Once we know why it matters, priorities become much clearer."
-  },
-  {
-    id: "collaboration",
-    number: "02",
-    className: "collaboration",
-    name: "Collaboration",
-    question: "AI helps me get my work done faster. But now I'm spending more time finding the right people, working across time zones, and joining last-minute meetings. Does working faster really have to mean more collaboration overhead?",
-    guide: "You may want to consider how aligning around a shared outcome can make collaboration more purposeful and help reduce unnecessary coordination.",
-    answer1: "No, not necessarily. When we're aligned on what we want to achieve together, it becomes easier to see where collaboration adds value and where we can simply move ahead.",
-    answer2: "I don't think so. The starting point is a shared goal. When everyone understands the outcome, we can spend less time coordinating for its own sake and more time making progress."
-  },
-  {
-    id: "compassion",
-    number: "05",
-    className: "compassion-skill",
-    name: "Compassion",
-    question: "If AI changes my role and I feel anxious or uncertain, is it okay to say so? What if I'm worried that speaking up will make my leader think I can't keep up?",
-    guide: "You may want to consider how acknowledging uncertainty, encouraging open conversations, and showing that support is available can help employees feel safe speaking up.",
-    answer1: "Yes, absolutely. Change can bring uncertainty, and that's a normal human response. Speaking up doesn't mean you can't keep up. It gives us a chance to understand your concerns and work through them together.",
-    answer2: "Of course. You shouldn't feel that you have to hide your worries to prove yourself. We all respond to change differently, and being open about how you feel helps us understand what support would be most useful."
-  }
-];
-
-const recorded = {};
-const recorders = {};
-const streams = {};
-const chunks = {};
-const timers = {};
-const startTimes = {};
-
+const LEADERS = [{"id": "akihisa-iwakawa", "name": "Akihisa Iwakawa", "position": "Distinguished PM & Director, CPSD Operations", "questions": [{"id": "communication", "name": "Communication", "question": "There's more information than ever, priorities keep changing. When everyone says their work is important, should I just follow the loudest voice? How do I know what actually matters—and what I should focus on?", "guide": "", "answer1": "No, definitely not. When everything feels urgent, understanding why something matters helps us see the bigger picture and decide where to put our energy.", "answer2": "No. Before deciding what to focus on, I think it's important to understand the purpose behind the work. Once we know why it matters, priorities become much clearer.", "group": "Option 1 — Understand the why", "groupTitle": "Understand the why"}, {"id": "collaboration", "name": "Collaboration", "question": "AI helps me get my work done faster. But now I'm spending more time finding the right people, working across time zones, and joining last-minute meetings. Does working faster really have to mean more collaboration overhead?", "guide": "", "answer1": "No, not necessarily. When we're aligned on what we want to achieve together, it becomes easier to see where collaboration adds value and where we can simply move ahead.", "answer2": "I don't think so. The starting point is a shared goal. When everyone understands the outcome, we can spend less time coordinating for its own sake and more time making progress.", "group": "Option 1 — Shared outcome", "groupTitle": "Shared outcome"}, {"id": "compassion", "name": "Compassion", "question": "If AI changes my role and I feel anxious or uncertain, is it okay to say so? What if I'm worried that speaking up will make my leader think I can't keep up?", "guide": "", "answer1": "Yes, absolutely. Change can bring uncertainty, and that's a normal human response. Speaking up doesn't mean you can't keep up. It gives us a chance to understand your concerns and work through them together.", "answer2": "Of course. You shouldn't feel that you have to hide your worries to prove yourself. We all respond to change differently, and being open about how you feel helps us understand what support would be most useful.", "group": "Option 1 — It's okay to speak up", "groupTitle": "It's okay to speak up"}]}, {"id": "yasushi-yanagisawa", "name": "Yasushi Yanagisawa", "position": "Director, Commercial UX Assurance", "questions": [{"id": "communication", "name": "Communication", "question": "There's more information than ever, priorities keep changing. When everyone says their work is important, should I just follow the loudest voice? How do I know what actually matters—and what I should focus on?", "guide": "", "answer1": "No. I'd start by asking what we're ultimately trying to achieve. Keeping that outcome in mind helps us separate what's important from what's simply urgent.", "answer2": "No, not at all. When priorities compete, having a clear picture of the desired result gives us a practical way to decide what deserves our attention first.", "group": "Option 2 — Focus on the outcome", "groupTitle": "Focus on the outcome"}, {"id": "curiosity", "name": "Curiosity", "question": "With new technologies emerging almost every day, do I really need to keep up with all of them? As the saying goes, “If I learn slowly enough, I won't have to learn at all.” With technology evolving this fast, how should I approach learning?", "guide": "", "answer1": "Yes, our ideas still matter. AI can help us generate answers, but we need to understand the real customer or business problem first. That's what helps us decide whether an answer is actually useful.", "answer2": "Absolutely. AI can offer suggestions, but it doesn't replace our responsibility to understand what people need. The clearer we are about the problem, the more effectively we can use AI to solve it.", "group": "Option 1 — Start with the real problem", "groupTitle": "Start with the real problem"}, {"id": "compassion", "name": "Compassion", "question": "If AI changes my role and I feel anxious or uncertain, is it okay to say so? What if I'm worried that speaking up will make my leader think I can't keep up?", "guide": "", "answer1": "Yes, definitely. Before making assumptions, we need to listen and understand what someone is experiencing. Everyone deserves to be heard, especially when they're navigating something unfamiliar.", "answer2": "Absolutely. We can't always know what someone is going through unless we take the time to listen. My responsibility as a leader is to understand their concerns before deciding how best to help.", "group": "Option 2 — Listen before judging", "groupTitle": "Listen before judging"}]}, {"id": "marco-gu", "name": "Marco Gu", "position": "ED, Smart Device & Acoustic Solutions Development", "questions": [{"id": "collaboration", "name": "Collaboration", "question": "AI helps me get my work done faster. But now I'm spending more time finding the right people, working across time zones, and joining last-minute meetings. Does working faster really have to mean more collaboration overhead?", "guide": "", "answer1": "No. Effective collaboration isn't about bringing everyone into every discussion. It's about involving the people who have the knowledge or expertise we need at the right time.", "answer2": "Not at all. We should be thoughtful about who needs to be involved. Getting the right people together early can often prevent unnecessary meetings and repeated work later.", "group": "Option 2 — Right people", "groupTitle": "Right people"}, {"id": "creativity", "name": "Creativity", "question": "If AI can already give me pretty good answers, do I really need to come up with my own ideas anymore?", "guide": "", "answer1": "No, definitely not. There's no need to follow every new technology. I'd focus on the ones that could genuinely improve my work or help solve a problem I'm facing.", "answer2": "No. Learning should have a purpose. Rather than trying to know a little about everything, we can identify which technologies are most relevant to our work and start there.", "group": "Option 1 — Focus on what matters", "groupTitle": "Focus on what matters"}, {"id": "curiosity", "name": "Curiosity", "question": "With new technologies emerging almost every day, do I really need to keep up with all of them? As the saying goes, “If I learn slowly enough, I won't have to learn at all.” With technology evolving this fast, how should I approach learning?", "guide": "", "answer1": "Yes. A good first answer doesn't mean we've found the best solution. We should keep asking what could be improved and whether there's another way to approach the problem.", "answer2": "Definitely. AI can give us a starting point, but we shouldn't accept the first result without thinking. Asking \"What if?\" or \"Could we do this better?\" is often where new ideas begin.", "group": "Option 2 — Challenge the first answer", "groupTitle": "Challenge the first answer"}]}, {"id": "taka-katoh", "name": "Taka Katoh", "position": "ED, ThinkPad Engineering", "questions": [{"id": "communication", "name": "Communication", "question": "There's more information than ever, priorities keep changing. When everyone says their work is important, should I just follow the loudest voice? How do I know what actually matters—and what I should focus on?", "guide": "", "answer1": "No. If we're unsure about what comes first, we should feel comfortable asking. A quick conversation to clarify priorities can save everyone time and effort.", "answer2": "No. Clear priorities don't always happen automatically. We need to communicate openly about what matters most, so everyone understands where to focus and what can wait.", "group": "Option 3 — Make priorities clear", "groupTitle": "Make priorities clear"}, {"id": "collaboration", "name": "Collaboration", "question": "AI helps me get my work done faster. But now I'm spending more time finding the right people, working across time zones, and joining last-minute meetings. Does working faster really have to mean more collaboration overhead?", "guide": "", "answer1": "No. Sometimes, a short conversation with another team early on can save us from solving the wrong problem or duplicating work. We don't need to figure everything out within our own team.", "answer2": "No, and we shouldn't let team boundaries slow us down. If another team has the experience or information we need, reaching out early can make the whole process smoother.", "group": "Option 3 — Break silos", "groupTitle": "Break silos"}, {"id": "creativity", "name": "Creativity", "question": "If AI can already give me pretty good answers, do I really need to come up with my own ideas anymore?", "guide": "", "answer1": "No. You don't need to master a tool before you try it. Start with a small, real task, explore what it can do, and learn as you go.", "answer2": "Not at all. Sometimes the fastest way to understand a new technology is to get hands-on experience. Pick something manageable, give it a try, and see what you can learn from the result.", "group": "Option 2 — Learn by trying", "groupTitle": "Learn by trying"}]}, {"id": "albert-v-makley", "name": "Albert V Makley", "position": "ED, Commercial Innovation & Workstation Development", "questions": [{"id": "creativity", "name": "Creativity", "question": "If AI can already give me pretty good answers, do I really need to come up with my own ideas anymore?", "guide": "", "answer1": "No. Curiosity isn't only about learning new tools. It's also about asking whether the way we've always done something is still the best way to do it.", "answer2": "No. We don't always need to add something new to improve. Sometimes, one simple question—\"Is there a better way?\"—can lead us to rethink a familiar process.", "group": "Option 3 — Question the old ways", "groupTitle": "Question the old ways"}, {"id": "curiosity", "name": "Curiosity", "question": "With new technologies emerging almost every day, do I really need to keep up with all of them? As the saying goes, “If I learn slowly enough, I won't have to learn at all.” With technology evolving this fast, how should I approach learning?", "guide": "", "answer1": "Yes. Creativity isn't just about coming up with something new. It's about turning ideas into solutions that work for our customers, our business, and the people who use them.", "answer2": "Absolutely. An idea only becomes valuable when it addresses a real need. We still need our own judgment to decide which AI-generated suggestions make sense and how to turn them into something useful.", "group": "Option 3 — Make ideas practical", "groupTitle": "Make ideas practical"}, {"id": "collaboration", "name": "Collaboration", "question": "AI helps me get my work done faster. But now I'm spending more time finding the right people, working across time zones, and joining last-minute meetings. Does working faster really have to mean more collaboration overhead?", "guide": "", "answer1": "No. The value of collaboration comes from combining different perspectives to solve a problem. It's not about having more meetings; it's about reaching a better solution.", "answer2": "Not necessarily. Sometimes one conversation with someone who sees the problem differently is more valuable than a long series of meetings. We should focus on the insight we need, not the meeting itself.", "group": "Option 4 — Different perspectives", "groupTitle": "Different perspectives"}]}, {"id": "tadashi-kosuga", "name": "Tadashi Kosuga", "position": "DE & ED, Commercial Subsystem Development", "questions": [{"id": "creativity", "name": "Creativity", "question": "If AI can already give me pretty good answers, do I really need to come up with my own ideas anymore?", "guide": "", "answer1": "No. What matters isn't how many technologies we know, but whether we can put what we learn into practice. Even one small improvement to our daily work can make learning worthwhile.", "answer2": "Not necessarily. I'd rather learn something useful and apply it well than collect knowledge that never gets used. The real value of learning is in what it helps us do better.", "group": "Option 4 — Turn learning into improvement", "groupTitle": "Turn learning into improvement"}, {"id": "compassion", "name": "Compassion", "question": "If AI changes my role and I feel anxious or uncertain, is it okay to say so? What if I'm worried that speaking up will make my leader think I can't keep up?", "guide": "", "answer1": "Yes, of course. You don't have to figure everything out by yourself. Asking questions early gives us a chance to clarify what's unclear and find practical ways to move forward.", "answer2": "Definitely. Reaching out for help is a positive step, not a weakness. If something feels difficult or uncertain, let's talk about it early so we can work out what support or learning would help.", "group": "Option 3 — Ask for help early", "groupTitle": "Ask for help early"}, {"id": "communication", "name": "Communication", "question": "There's more information than ever, priorities keep changing. When everyone says their work is important, should I just follow the loudest voice? How do I know what actually matters—and what I should focus on?", "guide": "", "answer1": "No. We don't have to respond to every request immediately. Good communication helps us filter out the noise and give our attention to the work that makes the biggest difference.", "answer2": "No, definitely not. In a busy environment, it's easy to get pulled in different directions. The goal is to make information useful, not just to keep adding to it.", "group": "Option 4 — Reduce noise", "groupTitle": "Reduce noise"}]}, {"id": "yuichi-shigematsu", "name": "Yuichi Shigematsu", "position": "Director, Strategic Software Engineering", "questions": [{"id": "curiosity", "name": "Curiosity", "question": "With new technologies emerging almost every day, do I really need to keep up with all of them? As the saying goes, “If I learn slowly enough, I won't have to learn at all.” With technology evolving this fast, how should I approach learning?", "guide": "", "answer1": "Yes, but we don't need to get everything right at the beginning. We can test an idea on a small scale, learn from the results, and improve it before taking it further.", "answer2": "Of course. We can use AI to explore possibilities, then experiment with the ideas that seem promising. Trying things out helps us discover what works in practice, not just what sounds good.", "group": "Option 4 — Try it out", "groupTitle": "Try it out"}, {"id": "creativity", "name": "Creativity", "question": "If AI can already give me pretty good answers, do I really need to come up with my own ideas anymore?", "guide": "", "answer1": "No, we don't have to chase every trend. But we should stay curious, keep asking questions, and be open to exploring new ideas when they might help us improve.", "answer2": "No. I don't think anyone can keep up with everything, and that's okay. What matters is maintaining an open mind and being willing to learn when something relevant comes along.", "group": "Option 5 — Stay curious", "groupTitle": "Stay curious"}, {"id": "communication", "name": "Communication", "question": "There's more information than ever, priorities keep changing. When everyone says their work is important, should I just follow the loudest voice? How do I know what actually matters—and what I should focus on?", "guide": "", "answer1": "No. When things change quickly, sharing our priorities, risks, and next steps helps everyone understand the situation and make better decisions together.", "answer2": "No. We can make work much easier to navigate by being clear about what we're doing, what might get in the way, and what needs to happen next.", "group": "Option 5 — Make risks and next steps visible", "groupTitle": "Make risks and next steps visible"}]}, {"id": "terry-chen", "name": "Terry Chen", "position": "Firmware Solutions Development Head", "questions": [{"id": "curiosity", "name": "Curiosity", "question": "With new technologies emerging almost every day, do I really need to keep up with all of them? As the saying goes, “If I learn slowly enough, I won't have to learn at all.” With technology evolving this fast, how should I approach learning?", "guide": "", "answer1": "Yes. Not every idea will work, and that's part of the process. What matters is learning from each attempt and using those lessons to develop a better solution next time.", "answer2": "Definitely. Creativity involves exploring possibilities, and some of them won't deliver the result we expected. That's okay, as long as we learn from the experience and keep improving.", "group": "Option 5 — Learn from what doesn't work", "groupTitle": "Learn from what doesn't work"}, {"id": "creativity", "name": "Creativity", "question": "If AI can already give me pretty good answers, do I really need to come up with my own ideas anymore?", "guide": "", "answer1": "No. We don't have to wait until we feel fully prepared. We can experiment, learn from what happens, and adjust our approach along the way.", "answer2": "Not at all. Learning is a process of trying things, seeing what works, and improving from there. We don't need to have every answer before we take the first step.", "group": "Option 6 — Experiment and learn", "groupTitle": "Experiment and learn"}, {"id": "collaboration", "name": "Collaboration", "question": "AI helps me get my work done faster. But now I'm spending more time finding the right people, working across time zones, and joining last-minute meetings. Does working faster really have to mean more collaboration overhead?", "guide": "", "answer1": "No. Once we agree on the goal, responsibilities, and next steps, people should be able to move forward with confidence instead of repeatedly checking in.", "answer2": "No. Good collaboration should create clarity, not more coordination. We need to align on the essentials, make ownership clear, and then trust each other to get the work done.", "group": "Option 5 — Align, then move", "groupTitle": "Align, then move"}]}, {"id": "hidetoshi-souma", "name": "Hidetoshi Souma", "position": "Director, Development Engineering • Commercial NECPC Development Lab", "questions": [{"id": "compassion", "name": "Compassion", "question": "If AI changes my role and I feel anxious or uncertain, is it okay to say so? What if I'm worried that speaking up will make my leader think I can't keep up?", "guide": "", "answer1": "Yes. I want people to feel comfortable telling me when something worries them. We can't address concerns that nobody feels safe enough to share, so creating that trust is important.", "answer2": "Absolutely. I'd rather have an honest conversation than have someone feel they need to struggle in silence. When people can speak openly, we have a much better chance of finding the right way forward.", "group": "Option 4 — Make it safe to be honest", "groupTitle": "Make it safe to be honest"}, {"id": "communication", "name": "Communication", "question": "There's more information than ever, priorities keep changing. When everyone says their work is important, should I just follow the loudest voice? How do I know what actually matters—and what I should focus on?", "guide": "", "answer1": "No. And if you're still unsure, please bring it up. Talking through different expectations can help us understand each other and agree on what matters most.", "answer2": "No, and you don't have to work it out alone. If priorities seem to conflict, let's have an open conversation and find a clear way forward together.", "group": "Option 6 — Talk it through", "groupTitle": "Talk it through"}, {"id": "collaboration", "name": "Collaboration", "question": "AI helps me get my work done faster. But now I'm spending more time finding the right people, working across time zones, and joining last-minute meetings. Does working faster really have to mean more collaboration overhead?", "guide": "", "answer1": "No. AI can help each of us work faster, but our results still depend on how well we work together. The key is knowing when to connect our efforts so the whole team can move forward.", "answer2": "No, working faster shouldn't mean becoming more isolated. We can each move quickly on our own tasks while staying connected to the people who help us achieve the bigger goal.", "group": "Option 6 — Win together", "groupTitle": "Win together"}]}, {"id": "jessica-wang", "name": "Jessica Wang", "position": "Director, HR Consulting • HR Partner - SMB, CPC & GIC", "questions": [{"id": "compassion", "name": "Compassion", "question": "If AI changes my role and I feel anxious or uncertain, is it okay to say so? What if I'm worried that speaking up will make my leader think I can't keep up?", "guide": "", "answer1": "Yes, absolutely. None of us needs to know everything from day one. We can be honest about what we need to learn, ask for feedback, and take practical steps to build our confidence and capabilities.", "answer2": "Of course. Learning new ways of working takes time. As leaders and colleagues, we should help each other identify gaps, learn from experience, and keep growing rather than expect everyone to have all the answers immediately.", "group": "Option 5 — Grow through feedback", "groupTitle": "Grow through feedback"}, {"id": "communication", "name": "Communication", "question": "There's more information than ever, priorities keep changing. When everyone says their work is important, should I just follow the loudest voice? How do I know what actually matters—and what I should focus on?", "guide": "", "answer1": "No. I think it's important to make sure we're on the same page about what matters most. When expectations are clear, we can focus on our work with more confidence and avoid spending time on the wrong things.", "answer2": "No, not necessarily. Sometimes, the challenge isn't a lack of effort, but that we're not aligned on priorities. Taking a moment to clarify expectations can help everyone focus on what will make the biggest difference.", "group": "Additional (V13/V14)", "groupTitle": "Additional response"}, {"id": "curiosity", "name": "Curiosity", "question": "With new technologies emerging almost every day, do I really need to keep up with all of them? As the saying goes, “If I learn slowly enough, I won't have to learn at all.” With technology evolving this fast, how should I approach learning?", "guide": "", "answer1": "Yes. I see AI as a tool that helps us get started, not something that should do all our thinking for us. Our experience and judgment are what help turn a good answer into a better solution.", "answer2": "Absolutely. AI can help us generate ideas more quickly, but we still need to add our own perspective, challenge assumptions, and make the result fit the situation.", "group": "Option 6 — Use AI as a starting point", "groupTitle": "Use AI as a starting point"}]}, {"id": "yasumichi-tsukamoto", "name": "Yasumichi Tsukamoto", "position": "VP, IDG Commercial Product Solution Development", "questions": [{"id": "compassion", "name": "Compassion", "question": "If AI changes my role and I feel anxious or uncertain, is it okay to say so? What if I'm worried that speaking up will make my leader think I can't keep up?", "guide": "", "answer1": "Yes, it's okay to share those concerns. Supporting people doesn't mean lowering our expectations. It means understanding the challenges they face, helping them develop the skills they need, and working together toward the expected results.", "answer2": "Absolutely. We can be empathetic while still maintaining high standards. The important thing is to understand where someone needs help, agree on practical next steps, and give them the support to keep moving forward.", "group": "Option 6 — Support with accountability", "groupTitle": "Support with accountability"}, {"id": "curiosity", "name": "Curiosity", "question": "With new technologies emerging almost every day, do I really need to keep up with all of them? As the saying goes, “If I learn slowly enough, I won't have to learn at all.” With technology evolving this fast, how should I approach learning?", "guide": "", "answer1": "Yes. AI can combine information and suggest possibilities, but our understanding of the context helps us see what's missing. That human perspective can make a real difference to the final result.", "answer2": "Definitely. The goal isn't to compete with AI at producing answers. It's to use AI to explore more options, then apply our own thinking to choose, adapt, and improve the solution.", "group": "Variant 13 — Bring your own perspective", "groupTitle": "Bring your own perspective"}, {"id": "collaboration", "name": "Collaboration", "question": "AI helps me get my work done faster. But now I'm spending more time finding the right people, working across time zones, and joining last-minute meetings. Does working faster really have to mean more collaboration overhead?", "guide": "", "answer1": "Not necessarily. We should also think about how we collaborate. Clear updates, shared documents, and focused discussions can help us stay connected without adding meetings to everyone's calendar.", "answer2": "No. We can be more intentional about when and how we work together. If a message or a quick check-in is enough, we don't need a meeting. Let's choose the simplest way to get aligned and keep moving.", "group": "Option 7 — Practical collaboration", "groupTitle": "Practical collaboration"}]}];
+const COLORS = {communication:"communication",collaboration:"collaboration",creativity:"creativity",curiosity:"curiosity",compassion:"compassion"};
+const recorded = {}, recorders = {}, streams = {}, chunks = {}, timers = {}, startTimes = {};
 const leaderSelect = document.getElementById("leaderSelect");
-function currentKey(id) { return `${leaderSelect.value}::${id}`; }
-function fmtTime(seconds) {
-  return `${String(Math.floor(seconds / 60)).padStart(2,"0")}:${String(seconds % 60).padStart(2,"0")}`;
+const esc = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+function currentLeader(){return LEADERS.find(l=>l.id===leaderSelect.value)||LEADERS[0]}
+function currentKey(qid, leaderId=leaderSelect.value){return `${leaderId}::${qid}`}
+function fmtTime(seconds){return `${String(Math.floor(seconds/60)).padStart(2,"0")}:${String(seconds%60).padStart(2,"0")}`}
+function fileSafe(s){return s.normalize("NFKD").replace(/[^a-zA-Z0-9-_]+/g,"-").replace(/^-+|-+$/g,"")}
+function updateProgress(){
+ const qs=currentLeader().questions;
+ const done=qs.filter(q=>recorded[currentKey(q.id)]?.url).length;
+ document.getElementById("progressLabel").textContent=`${done} of ${qs.length} recorded`;
+ document.getElementById("progressFill").style.width=`${done/qs.length*100}%`;
+ updateBulkDownload();
 }
-
-function updateProgress() {
-  const done = QUESTIONS.filter(q => recorded[currentKey(q.id)]?.url).length;
-  document.getElementById("progressLabel").textContent = `${done} of ${QUESTIONS.length} recorded`;
-  document.getElementById("progressFill").style.width = `${done / QUESTIONS.length * 100}%`;
+function renderQuestions(){
+ const leader=currentLeader();
+ document.getElementById("leaderName").textContent=leader.name;
+ document.getElementById("leaderRole").textContent=leader.position;
+ const root=document.getElementById("questions");root.innerHTML="";
+ leader.questions.forEach(q=>{
+  const key=currentKey(q.id),saved=recorded[key],done=Boolean(saved?.url);
+  const card=document.createElement("section");card.className="card";card.dataset.q=q.id;
+  card.innerHTML=`
+   <div class="card-top"><div class="c-name ${COLORS[q.id]}"><span class="c-dot"></span>${esc(q.name)}</div><div class="state ${done?"done":""}">${done?"Recording ready":"Not recorded yet"}</div></div>
+   <div class="label">Employee Question</div><p class="question">${esc(q.question)}</p>
+   <p class="prompt">As a leader, how would you respond?</p>
+   <p class="guide">You might consider approaching this through <strong>${esc(q.groupTitle)}</strong>, drawing on the 5C skillset of ${esc(q.name)}.</p>
+   <div class="answers"><div class="answers-head"><div class="answers-title">Suggested responses</div><div class="answers-note">Choose A or B, or share your own response</div></div>
+    <div class="option"><span class="option-letter">A.</span><p>${esc(q.answer1)}</p></div>
+    <div class="option"><span class="option-letter">B.</span><p>${esc(q.answer2)}</p></div>
+    <div class="own-option"><span class="option-letter">C.</span><p><strong>Others</strong> <span>(Share your thoughts in your own words.)</span></p></div>
+   </div>
+   <div class="recording"><div class="recording-head"><strong>Record your response</strong><span>Audio only · No video needed</span></div>
+    <div class="controls"><button class="record" data-action="record" data-q="${esc(q.id)}">● Start recording</button><button data-action="stop" data-q="${esc(q.id)}" disabled>Stop</button><button data-action="retake" data-q="${esc(q.id)}" ${done?"":"disabled"}>Re-record</button><button class="primary" data-action="download" data-q="${esc(q.id)}" ${done?"":"disabled"}>Download audio</button><span class="timer" id="timer-${esc(q.id)}">00:00</span></div>
+    <div class="audio-area" id="audio-${esc(q.id)}">${done?`<audio controls src="${saved.url}"></audio>`:'<div class="placeholder">Your recording will appear here after you stop.</div>'}</div><div class="status" id="status-${esc(q.id)}"></div>
+   </div>`;
+  root.appendChild(card);
+ });
+ root.querySelectorAll("button[data-action]").forEach(btn=>btn.addEventListener("click",()=>handleAction(btn.dataset.action,btn.dataset.q)));
+ updateProgress();
 }
-
-function renderQuestions() {
-  const root = document.getElementById("questions");
-  root.innerHTML = "";
-
-  QUESTIONS.forEach(q => {
-    const key = currentKey(q.id);
-    const saved = recorded[key];
-    const done = Boolean(saved?.url);
-    const card = document.createElement("section");
-    card.className = "card";
-    card.innerHTML = `
-      <div class="card-top">
-        <div class="c-name ${q.className}">${q.number} — ${q.name}</div>
-        <div class="state ${done ? "done" : ""}">${done ? "Recording ready" : "Not recorded yet"}</div>
-      </div>
-      <div class="label">Employee Question</div>
-      <p class="question">${q.question}</p>
-      <p class="prompt">As a leader, how would you respond?</p>
-      <p class="guide">${q.guide}</p>
-
-      <div class="answers">
-        <div class="answers-head">
-          <div class="answers-title">Reference Answers · Choose either version</div>
-          <div class="answers-note">Use your own words and experience.</div>
-        </div>
-        <div class="option"><strong>Version 1</strong><p>${q.answer1}</p></div>
-        <div class="option"><strong>Version 2</strong><p>${q.answer2}</p></div>
-        <p class="own-approach">Or take your own approach.</p>
-      </div>
-
-      <div class="recording">
-        <div class="recording-head">
-          <strong>Record your response</strong>
-          <span>Audio only · No video needed</span>
-        </div>
-        <div class="controls">
-          <button class="record" data-action="record" data-q="${q.id}">● Start recording</button>
-          <button data-action="stop" data-q="${q.id}" disabled>Stop</button>
-          <button data-action="retake" data-q="${q.id}" ${done ? "" : "disabled"}>Re-record</button>
-          <button class="primary" data-action="download" data-q="${q.id}" ${done ? "" : "disabled"}>Download audio</button>
-          <span class="timer" id="timer-${q.id}">00:00</span>
-        </div>
-        <div class="audio-area" id="audio-${q.id}">
-          ${done ? `<audio controls src="${saved.url}"></audio>` : `<div class="placeholder">Your recording will appear here after you stop.</div>`}
-        </div>
-        <div class="status" id="status-${q.id}"></div>
-      </div>
-    `;
-    root.appendChild(card);
-  });
-
-  root.querySelectorAll("button[data-action]").forEach(button => {
-    button.addEventListener("click", () => handleAction(button.dataset.action, button.dataset.q));
-  });
-  updateProgress();
-}
-
-async function handleAction(action, qid) {
-  const key = currentKey(qid);
-  const card = [...document.querySelectorAll(".card")].find(el =>
-    el.querySelector(`[data-q="${qid}"]`)
-  );
-  if (!card) return;
-
-  const recordBtn = card.querySelector('[data-action="record"]');
-  const stopBtn = card.querySelector('[data-action="stop"]');
-  const retakeBtn = card.querySelector('[data-action="retake"]');
-  const downloadBtn = card.querySelector('[data-action="download"]');
-  const status = card.querySelector(".status");
-  const timer = card.querySelector(".timer");
-  const state = card.querySelector(".state");
-
-  if (action === "record") {
-    if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
-      status.textContent = "Audio recording isn't supported in this browser. Try the latest Chrome or Edge.";
-      return;
+async function handleAction(action,qid){
+ const key=currentKey(qid),card=document.querySelector(`.card[data-q="${qid}"]`);if(!card)return;
+ const recordBtn=card.querySelector('[data-action="record"]'),stopBtn=card.querySelector('[data-action="stop"]'),retakeBtn=card.querySelector('[data-action="retake"]'),downloadBtn=card.querySelector('[data-action="download"]'),status=card.querySelector(".status"),timer=card.querySelector(".timer"),state=card.querySelector(".state");
+ if(action==="record"){
+  if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){status.textContent="Audio recording isn't supported in this browser. Try the latest Chrome or Edge.";return}
+  try{
+   const stream=await navigator.mediaDevices.getUserMedia({audio:true});streams[key]=stream;chunks[key]=[];
+   let recorder;try{recorder=new MediaRecorder(stream)}catch(e){stream.getTracks().forEach(t=>t.stop());status.textContent="Couldn't start recording with this browser's audio format.";return}
+   recorders[key]=recorder;
+   recorder.ondataavailable=e=>{if(e.data?.size)chunks[key].push(e.data)};
+   recorder.onstop=()=>{
+    stream.getTracks().forEach(t=>t.stop());clearInterval(timers[key]);
+    const blob=new Blob(chunks[key],{type:recorder.mimeType||"audio/webm"});
+    if(recorded[key]?.url)URL.revokeObjectURL(recorded[key].url);
+    const url=URL.createObjectURL(blob);
+    const leader=currentLeader();
+    recorded[key]={blob,url,filename:`${fileSafe(leader.name)}-${fileSafe(qid)}-response.webm`};
+    const liveCard=document.querySelector(`.card[data-q="${qid}"]`);
+    if(liveCard && leaderSelect.value===leader.id){
+     liveCard.querySelector(`#audio-${qid}`).innerHTML=`<audio controls src="${url}"></audio>`;
+     liveCard.querySelector('[data-action="record"]').disabled=false;
+     liveCard.querySelector('[data-action="record"]').classList.remove("recording");
+     liveCard.querySelector('[data-action="record"]').textContent="● Start recording";
+     liveCard.querySelector('[data-action="stop"]').disabled=true;
+     liveCard.querySelector('[data-action="retake"]').disabled=false;
+     liveCard.querySelector('[data-action="download"]').disabled=false;
+     liveCard.querySelector(".status").textContent="Recording ready. Listen back or download the audio file.";
+     liveCard.querySelector(".state").classList.add("done");liveCard.querySelector(".state").textContent="Recording ready";
     }
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({audio:true});
-      streams[key] = stream;
-      chunks[key] = [];
-      let recorder;
-      try {
-        recorder = new MediaRecorder(stream);
-      } catch (e) {
-        stream.getTracks().forEach(track => track.stop());
-        status.textContent = "Couldn't start recording with this browser's audio format.";
-        return;
-      }
-      recorders[key] = recorder;
-      recorder.ondataavailable = event => {
-        if (event.data?.size) chunks[key].push(event.data);
-      };
-      recorder.onstop = () => {
-        stream.getTracks().forEach(track => track.stop());
-        clearInterval(timers[key]);
-        const blob = new Blob(chunks[key], {type: recorder.mimeType || "audio/webm"});
-        if (recorded[key]?.url) URL.revokeObjectURL(recorded[key].url);
-        const url = URL.createObjectURL(blob);
-        recorded[key] = {
-          blob,
-          url,
-          filename: `${leaderSelect.value}-${qid}-response.webm`
-        };
-        card.querySelector(`#audio-${qid}`).innerHTML = `<audio controls src="${url}"></audio>`;
-        recordBtn.disabled = false;
-        recordBtn.classList.remove("recording");
-        recordBtn.textContent = "● Start recording";
-        stopBtn.disabled = true;
-        retakeBtn.disabled = false;
-        downloadBtn.disabled = false;
-        status.textContent = "Recording ready. Listen back or download the audio file.";
-        state.classList.add("done");
-        state.textContent = "Recording ready";
-        updateProgress();
-      };
-
-      recorder.start();
-      startTimes[key] = Date.now();
-      recordBtn.classList.add("recording");
-      recordBtn.textContent = "● Recording…";
-      stopBtn.disabled = false;
-      retakeBtn.disabled = true;
-      downloadBtn.disabled = true;
-      status.textContent = "Recording in progress. Select Stop when you're finished.";
-      timer.textContent = "00:00";
-      timers[key] = setInterval(() => {
-        timer.textContent = fmtTime(Math.floor((Date.now() - startTimes[key]) / 1000));
-      }, 250);
-    } catch (error) {
-      status.textContent = error.name === "NotAllowedError"
-        ? "Microphone access was blocked. Allow microphone access in your browser settings and try again."
-        : "Couldn't access the microphone. Check your device and browser permissions.";
-    }
-  }
-
-  if (action === "stop") {
-    if (recorders[key] && recorders[key].state !== "inactive") recorders[key].stop();
-  }
-
-  if (action === "retake") {
-    if (recorded[key]?.url) URL.revokeObjectURL(recorded[key].url);
-    delete recorded[key];
-    card.querySelector(`#audio-${qid}`).innerHTML =
-      '<div class="placeholder">Your new recording will appear here after you stop.</div>';
-    timer.textContent = "00:00";
-    recordBtn.disabled = false;
-    recordBtn.classList.remove("recording");
-    recordBtn.textContent = "● Start recording";
-    stopBtn.disabled = true;
-    retakeBtn.disabled = true;
-    downloadBtn.disabled = true;
-    status.textContent = "Ready for a new recording.";
-    state.classList.remove("done");
-    state.textContent = "Not recorded yet";
     updateProgress();
-  }
-
-  if (action === "download" && recorded[key]) {
-    const a = document.createElement("a");
-    a.href = recorded[key].url;
-    a.download = recorded[key].filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    status.textContent = "Download started.";
-  }
+   };
+   recorder.start();startTimes[key]=Date.now();recordBtn.classList.add("recording");recordBtn.textContent="● Recording…";recordBtn.disabled=true;stopBtn.disabled=false;retakeBtn.disabled=true;downloadBtn.disabled=true;
+   status.textContent="Recording in progress. Select Stop when you're finished.";timer.textContent="00:00";
+   timers[key]=setInterval(()=>{timer.textContent=fmtTime(Math.floor((Date.now()-startTimes[key])/1000))},250);
+  }catch(error){status.textContent=error.name==="NotAllowedError"?"Microphone access was blocked. Allow microphone access in your browser settings and try again.":"Couldn't access the microphone. Check your device and browser permissions."}
+ }
+ if(action==="stop"){if(recorders[key]&&recorders[key].state!=="inactive")recorders[key].stop()}
+ if(action==="retake"){
+  if(recorded[key]?.url)URL.revokeObjectURL(recorded[key].url);delete recorded[key];
+  card.querySelector(`#audio-${qid}`).innerHTML='<div class="placeholder">Your new recording will appear here after you stop.</div>';
+  timer.textContent="00:00";recordBtn.disabled=false;recordBtn.classList.remove("recording");recordBtn.textContent="● Start recording";stopBtn.disabled=true;retakeBtn.disabled=true;downloadBtn.disabled=true;status.textContent="Ready for a new recording.";state.classList.remove("done");state.textContent="Not recorded yet";updateProgress();
+ }
+ if(action==="download"&&recorded[key]){
+  const a=document.createElement("a");a.href=recorded[key].url;a.download=recorded[key].filename;document.body.appendChild(a);a.click();a.remove();status.textContent="Download started.";
+ }
 }
-
+function crc32(bytes){let crc=-1;for(let i=0;i<bytes.length;i++){crc^=bytes[i];for(let j=0;j<8;j++)crc=(crc>>>1)^(0xEDB88320&-(crc&1))}return(crc^-1)>>>0}
+function write16(v,o,n){v.setUint16(o,n,true)}function write32(v,o,n){v.setUint32(o,n>>>0,true)}
+async function makeZip(files){
+ const encoder=new TextEncoder(),localParts=[],centralParts=[];let offset=0;
+ for(const file of files){
+  const nameBytes=encoder.encode(file.name),data=new Uint8Array(await file.blob.arrayBuffer()),crc=crc32(data);
+  const local=new Uint8Array(30+nameBytes.length),lv=new DataView(local.buffer);
+  write32(lv,0,0x04034b50);write16(lv,4,20);write16(lv,6,0x0800);write16(lv,8,0);write16(lv,10,0);write16(lv,12,0);write32(lv,14,crc);write32(lv,18,data.length);write32(lv,22,data.length);write16(lv,26,nameBytes.length);write16(lv,28,0);local.set(nameBytes,30);localParts.push(local,data);
+  const central=new Uint8Array(46+nameBytes.length),cv=new DataView(central.buffer);
+  write32(cv,0,0x02014b50);write16(cv,4,20);write16(cv,6,20);write16(cv,8,0x0800);write16(cv,10,0);write16(cv,12,0);write16(cv,14,0);write32(cv,16,crc);write32(cv,20,data.length);write32(cv,24,data.length);write16(cv,28,nameBytes.length);write16(cv,30,0);write16(cv,32,0);write16(cv,34,0);write16(cv,36,0);write32(cv,38,0);write32(cv,42,offset);central.set(nameBytes,46);centralParts.push(central);offset+=local.length+data.length;
+ }
+ const centralSize=centralParts.reduce((s,p)=>s+p.length,0),end=new Uint8Array(22),ev=new DataView(end.buffer);
+ write32(ev,0,0x06054b50);write16(ev,4,0);write16(ev,6,0);write16(ev,8,files.length);write16(ev,10,files.length);write32(ev,12,centralSize);write32(ev,16,offset);write16(ev,20,0);
+ return new Blob([...localParts,...centralParts,end],{type:"application/zip"});
+}
+function updateBulkDownload(){
+ const ready=Object.keys(recorded).filter(k=>k.startsWith(`${leaderSelect.value}::`)&&recorded[k]?.blob);
+ const btn=document.getElementById("downloadAll");btn.disabled=ready.length===0;btn.textContent=ready.length?`↓ Download all audio (${ready.length}) · ZIP`:"↓ Download all audio (.zip)";
+}
+document.getElementById("downloadAll").addEventListener("click",async()=>{
+ const btn=document.getElementById("downloadAll"),status=document.getElementById("bulkStatus"),leader=currentLeader();
+ const files=Object.keys(recorded).filter(k=>k.startsWith(`${leaderSelect.value}::`)&&recorded[k]?.blob).map(k=>({name:recorded[k].filename,blob:recorded[k].blob}));
+ if(!files.length)return;btn.disabled=true;btn.textContent="Preparing ZIP…";status.textContent="Packing your audio files…";
+ try{const zip=await makeZip(files),url=URL.createObjectURL(zip),a=document.createElement("a");a.href=url;a.download=`${fileSafe(leader.name)}-5C-audio-recordings.zip`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);status.textContent=`${files.length} audio file${files.length===1?"":"s"} packed. Your ZIP download has started.`}
+ catch(e){status.textContent="Could not prepare the ZIP. Please download each recording separately."}
+ finally{updateBulkDownload()}
+});
+LEADERS.forEach(l=>{const o=document.createElement("option");o.value=l.id;o.textContent=l.name;leaderSelect.appendChild(o)});
+leaderSelect.value=LEADERS[0].id;
+leaderSelect.addEventListener("change",()=>{
+ const active=Object.values(recorders).some(r=>r&&r.state==="recording");
+ if(active){alert("Please stop the current recording before switching leaders.");leaderSelect.value=activeLeaderId;return}
+ activeLeaderId=leaderSelect.value;document.getElementById("bulkStatus").textContent="";renderQuestions();
+});
+let activeLeaderId=leaderSelect.value;
 renderQuestions();
 </script>
 </body>
