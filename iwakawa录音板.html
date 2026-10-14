@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5C Through Leadership Lens</title>
+<style>
+:root {
+  --ink:#202124;
+  --muted:#686c72;
+  --line:#e5e7e9;
+  --red:#EB140A;
+  --orange:#FF6A00;
+  --purple:#7A126B;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:#f3f4f5;
+  color:var(--ink);
+  font-family:"Segoe UI",Arial,sans-serif;
+  line-height:1.55;
+}
+.page { max-width:1000px; margin:auto; padding:30px 20px 50px; }
+.topline {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; margin-bottom:22px;
+}
+.brand {
+  font-size:12px; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:#70747a;
+}
+.pill {
+  font-size:12px; border:1px solid var(--line);
+  border-radius:99px; padding:6px 12px; background:white;
+}
+.hero {
+  background:white; border:1px solid var(--line);
+  border-radius:20px; padding:32px; margin-bottom:26px;
+}
+.eyebrow {
+  color:var(--purple); font-size:11px; font-weight:800;
+  letter-spacing:.15em; text-transform:uppercase; margin-bottom:10px;
+}
+h1 {
+  font-size:clamp(30px,4vw,42px); line-height:1.15;
+  letter-spacing:-.04em; margin:0 0 12px;
+}
+.intro { max-width:760px; color:var(--muted); font-size:14px; margin:0; }
+.meta {
+  display:flex; align-items:center; flex-wrap:wrap;
+  gap:16px; margin-top:24px;
+}
+.leader-select { display:flex; align-items:center; gap:9px; font-size:13px; }
+select {
+  background:white; border:1px solid #d7dade; border-radius:8px;
+  padding:9px 12px; font:inherit;
+}
+.progress { display:flex; align-items:center; gap:10px; margin-left:auto; }
+.progress-label { font-size:12px; color:var(--muted); white-space:nowrap; }
+.track { width:110px; height:5px; background:#e8e9eb; border-radius:9px; overflow:hidden; }
+.fill { width:0; height:100%; background:var(--purple); transition:width .2s; }
+.section-head {
+  display:flex; justify-content:space-between; align-items:baseline;
+  gap:12px; margin:28px 2px 12px;
+}
+.section-head h2 { margin:0; font-size:18px; }
+.section-head p { margin:0; font-size:12px; color:#777b80; }
+.card {
+  background:white; border:1px solid var(--line);
+  border-radius:17px; padding:26px; margin-bottom:14px;
+}
+.card-top {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; margin-bottom:20px;
+}
+.c-name { font-size:12px; font-weight:800; letter-spacing:.13em; }
+.communication { color:var(--red); }
+.collaboration { color:var(--orange); }
+.compassion-skill { color:var(--purple); }
+.state {
+  font-size:11px; color:#777b80; border:1px solid var(--line);
+  border-radius:99px; padding:5px 9px; white-space:nowrap;
+}
+.state.done { color:#267445; background:#f4fbf6; border-color:#cce6d5; }
+.label {
+  color:#85898e; font-size:10px; font-weight:800;
+  letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px;
+}
+.question {
+  font-size:19px; font-weight:650; line-height:1.45;
+  letter-spacing:-.02em; margin:0 0 22px;
+}
+.prompt { font-size:14px; font-weight:700; margin:0 0 5px; }
+.guide { color:var(--muted); font-size:14px; margin:0 0 20px; }
+.answers {
+  background:#f8f8f9; border:1px solid #eceef0;
+  border-radius:12px; padding:15px; margin-bottom:20px;
+}
+.answers-head {
+  display:flex; justify-content:space-between; flex-wrap:wrap;
+  gap:6px; margin-bottom:11px;
+}
+.answers-title {
+  font-size:11px; font-weight:800; letter-spacing:.08em;
+  text-transform:uppercase; color:#656970;
+}
+.answers-note,.own-approach { color:#85898e; font-size:11px; }
+.option {
+  background:white; border:1px solid #e5e7e9;
+  border-radius:9px; padding:12px 14px; margin-top:8px;
+}
+.option strong { display:block; font-size:11px; color:#777b80; margin-bottom:4px; }
+.option p { font-size:13px; line-height:1.6; margin:0; }
+.own-approach { margin:10px 2px 0; }
+.recording { border-top:1px solid #eceef0; padding-top:18px; }
+.recording-head {
+  display:flex; justify-content:space-between; flex-wrap:wrap;
+  gap:8px; margin-bottom:12px;
+}
+.recording-head strong { font-size:13px; }
+.recording-head span { font-size:11px; color:#777b80; }
+.controls { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+button {
+  font:600 12px "Segoe UI",Arial,sans-serif; cursor:pointer;
+  border:1px solid #d9dcdf; border-radius:8px;
+  background:white; color:#303338; padding:9px 12px;
+}
+button:hover:not(:disabled) { background:#f4f5f6; }
+button.primary { color:white; background:#202124; border-color:#202124; }
+button.record { color:#a51b16; border-color:#e8c6c4; }
+button.record.recording { color:white; background:#c52b24; border-color:#c52b24; }
+button:disabled { opacity:.4; cursor:not-allowed; }
+.timer { min-width:42px; font-size:12px; color:#777b80; font-variant-numeric:tabular-nums; }
+.audio-area { margin-top:12px; }
+audio { display:block; width:100%; height:38px; }
+.placeholder {
+  border:1px dashed #dfe1e3; background:#f7f8f9;
+  border-radius:8px; color:#92969b; font-size:12px; padding:11px 13px;
+}
+.status { min-height:16px; margin-top:7px; color:#777b80; font-size:11px; }
+.footer { text-align:center; color:#8b8f94; font-size:11px; padding-top:18px; }
+@media(max-width:620px) {
+  .page { padding:16px 11px 30px; }
+  .hero { padding:23px 19px; }
+  .card { padding:20px 16px; }
+  .question { font-size:17px; }
+  .progress { width:100%; margin-left:0; }
+  .track { flex:1; }
+  .section-head { align-items:flex-start; flex-direction:column; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topline">
+    <div class="brand">CPSD · 5C Through Leadership Lens</div>
+    <div class="pill">Leader Response Studio</div>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">Your voice matters</div>
+    <h1>Respond to what employees are really asking.</h1>
+    
+<p class="intro">
+     As AI continues to shape the way we work, employees may have new questions, concerns, and uncertainties.
+  <br><br>
+  We’d like to invite you to share your perspective on three questions that employees may be asking. This is an opportunity to listen, understand and respond, helping employees feel heard as we navigate AI transformation together.
+  <br><br>
+  For each question, we’ve provided two suggested approaches for reference. Please feel free to use one, make it your own, or share your perspective in your own way, while bringing the corresponding 5C skillsets into your response.
+    </p>
+    <div class="meta">
+      <label class="leader-select">Leader
+        <select id="leaderSelect">
+          <option value="akihisa-iwakawa">Akihisa Iwakawa</option>
+        </select>
+      </label>
+      <div class="progress">
+        <span class="progress-label" id="progressLabel">0 of 3 recorded</span>
+        <div class="track"><div class="fill" id="progressFill"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <h2>Your three assigned questions</h2>
+    <p>Record, listen back, and re-record if needed.</p>
+  </div>
+  <main id="questions"></main>
+  <div class="footer">5C · Create clarity. Work together. Keep learning. Lead with empathy.</div>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    id: "communication",
+    number: "01",
+    className: "communication",
+    name: "Communication",
+    question: "There’s more information than ever, priorities keep changing. When everyone says their work is important, should I just follow the loudest voice? How do I know what actually matters—and what I should focus on?",
+    guide: "You may want to consider how understanding the “why” behind the work can help clarify priorities.",
+    answer1: "No, definitely not. When everything feels urgent, understanding why something matters helps us see the bigger picture and decide where to put our energy.",
+    answer2: "No. Before deciding what to focus on, I think it's important to understand the purpose behind the work. Once we know why it matters, priorities become much clearer."
+  },
+  {
+    id: "collaboration",
+    number: "02",
+    className: "collaboration",
+    name: "Collaboration",
+    question: "AI helps me get my work done faster. But now I'm spending more time finding the right people, working across time zones, and joining last-minute meetings. Does working faster really have to mean more collaboration overhead?",
+    guide: "You may want to consider how aligning around a shared outcome can make collaboration more purposeful and help reduce unnecessary coordination.",
+    answer1: "No, not necessarily. When we're aligned on what we want to achieve together, it becomes easier to see where collaboration adds value and where we can simply move ahead.",
+    answer2: "I don't think so. The starting point is a shared goal. When everyone understands the outcome, we can spend less time coordinating for its own sake and more time making progress."
+  },
+  {
+    id: "compassion",
+    number: "05",
+    className: "compassion-skill",
+    name: "Compassion",
+    question: "If AI changes my role and I feel anxious or uncertain, is it okay to say so? What if I'm worried that speaking up will make my leader think I can't keep up?",
+    guide: "You may want to consider how acknowledging uncertainty, encouraging open conversations, and showing that support is available can help employees feel safe speaking up.",
+    answer1: "Yes, absolutely. Change can bring uncertainty, and that's a normal human response. Speaking up doesn't mean you can't keep up. It gives us a chance to understand your concerns and work through them together.",
+    answer2: "Of course. You shouldn't feel that you have to hide your worries to prove yourself. We all respond to change differently, and being open about how you feel helps us understand what support would be most useful."
+  }
+];
+
+const recorded = {};
+const recorders = {};
+const streams = {};
+const chunks = {};
+const timers = {};
+const startTimes = {};
+
+const leaderSelect = document.getElementById("leaderSelect");
+function currentKey(id) { return `${leaderSelect.value}::${id}`; }
+function fmtTime(seconds) {
+  return `${String(Math.floor(seconds / 60)).padStart(2,"0")}:${String(seconds % 60).padStart(2,"0")}`;
+}
+
+function updateProgress() {
+  const done = QUESTIONS.filter(q => recorded[currentKey(q.id)]?.url).length;
+  document.getElementById("progressLabel").textContent = `${done} of ${QUESTIONS.length} recorded`;
+  document.getElementById("progressFill").style.width = `${done / QUESTIONS.length * 100}%`;
+}
+
+function renderQuestions() {
+  const root = document.getElementById("questions");
+  root.innerHTML = "";
+
+  QUESTIONS.forEach(q => {
+    const key = currentKey(q.id);
+    const saved = recorded[key];
+    const done = Boolean(saved?.url);
+    const card = document.createElement("section");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="c-name ${q.className}">${q.number} — ${q.name}</div>
+        <div class="state ${done ? "done" : ""}">${done ? "Recording ready" : "Not recorded yet"}</div>
+      </div>
+      <div class="label">Employee Question</div>
+      <p class="question">${q.question}</p>
+      <p class="prompt">As a leader, how would you respond?</p>
+      <p class="guide">${q.guide}</p>
+
+      <div class="answers">
+        <div class="answers-head">
+          <div class="answers-title">Reference Answers · Choose either version</div>
+          <div class="answers-note">Use your own words and experience.</div>
+        </div>
+        <div class="option"><strong>Version 1</strong><p>${q.answer1}</p></div>
+        <div class="option"><strong>Version 2</strong><p>${q.answer2}</p></div>
+        <p class="own-approach">Or take your own approach.</p>
+      </div>
+
+      <div class="recording">
+        <div class="recording-head">
+          <strong>Record your response</strong>
+          <span>Audio only · No video needed</span>
+        </div>
+        <div class="controls">
+          <button class="record" data-action="record" data-q="${q.id}">● Start recording</button>
+          <button data-action="stop" data-q="${q.id}" disabled>Stop</button>
+          <button data-action="retake" data-q="${q.id}" ${done ? "" : "disabled"}>Re-record</button>
+          <button class="primary" data-action="download" data-q="${q.id}" ${done ? "" : "disabled"}>Download audio</button>
+          <span class="timer" id="timer-${q.id}">00:00</span>
+        </div>
+        <div class="audio-area" id="audio-${q.id}">
+          ${done ? `<audio controls src="${saved.url}"></audio>` : `<div class="placeholder">Your recording will appear here after you stop.</div>`}
+        </div>
+        <div class="status" id="status-${q.id}"></div>
+      </div>
+    `;
+    root.appendChild(card);
+  });
+
+  root.querySelectorAll("button[data-action]").forEach(button => {
+    button.addEventListener("click", () => handleAction(button.dataset.action, button.dataset.q));
+  });
+  updateProgress();
+}
+
+async function handleAction(action, qid) {
+  const key = currentKey(qid);
+  const card = [...document.querySelectorAll(".card")].find(el =>
+    el.querySelector(`[data-q="${qid}"]`)
+  );
+  if (!card) return;
+
+  const recordBtn = card.querySelector('[data-action="record"]');
+  const stopBtn = card.querySelector('[data-action="stop"]');
+  const retakeBtn = card.querySelector('[data-action="retake"]');
+  const downloadBtn = card.querySelector('[data-action="download"]');
+  const status = card.querySelector(".status");
+  const timer = card.querySelector(".timer");
+  const state = card.querySelector(".state");
+
+  if (action === "record") {
+    if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
+      status.textContent = "Audio recording isn't supported in this browser. Try the latest Chrome or Edge.";
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+      streams[key] = stream;
+      chunks[key] = [];
+      let recorder;
+      try {
+        recorder = new MediaRecorder(stream);
+      } catch (e) {
+        stream.getTracks().forEach(track => track.stop());
+        status.textContent = "Couldn't start recording with this browser's audio format.";
+        return;
+      }
+      recorders[key] = recorder;
+      recorder.ondataavailable = event => {
+        if (event.data?.size) chunks[key].push(event.data);
+      };
+      recorder.onstop = () => {
+        stream.getTracks().forEach(track => track.stop());
+        clearInterval(timers[key]);
+        const blob = new Blob(chunks[key], {type: recorder.mimeType || "audio/webm"});
+        if (recorded[key]?.url) URL.revokeObjectURL(recorded[key].url);
+        const url = URL.createObjectURL(blob);
+        recorded[key] = {
+          blob,
+          url,
+          filename: `${leaderSelect.value}-${qid}-response.webm`
+        };
+        card.querySelector(`#audio-${qid}`).innerHTML = `<audio controls src="${url}"></audio>`;
+        recordBtn.disabled = false;
+        recordBtn.classList.remove("recording");
+        recordBtn.textContent = "● Start recording";
+        stopBtn.disabled = true;
+        retakeBtn.disabled = false;
+        downloadBtn.disabled = false;
+        status.textContent = "Recording ready. Listen back or download the audio file.";
+        state.classList.add("done");
+        state.textContent = "Recording ready";
+        updateProgress();
+      };
+
+      recorder.start();
+      startTimes[key] = Date.now();
+      recordBtn.classList.add("recording");
+      recordBtn.textContent = "● Recording…";
+      stopBtn.disabled = false;
+      retakeBtn.disabled = true;
+      downloadBtn.disabled = true;
+      status.textContent = "Recording in progress. Select Stop when you're finished.";
+      timer.textContent = "00:00";
+      timers[key] = setInterval(() => {
+        timer.textContent = fmtTime(Math.floor((Date.now() - startTimes[key]) / 1000));
+      }, 250);
+    } catch (error) {
+      status.textContent = error.name === "NotAllowedError"
+        ? "Microphone access was blocked. Allow microphone access in your browser settings and try again."
+        : "Couldn't access the microphone. Check your device and browser permissions.";
+    }
+  }
+
+  if (action === "stop") {
+    if (recorders[key] && recorders[key].state !== "inactive") recorders[key].stop();
+  }
+
+  if (action === "retake") {
+    if (recorded[key]?.url) URL.revokeObjectURL(recorded[key].url);
+    delete recorded[key];
+    card.querySelector(`#audio-${qid}`).innerHTML =
+      '<div class="placeholder">Your new recording will appear here after you stop.</div>';
+    timer.textContent = "00:00";
+    recordBtn.disabled = false;
+    recordBtn.classList.remove("recording");
+    recordBtn.textContent = "● Start recording";
+    stopBtn.disabled = true;
+    retakeBtn.disabled = true;
+    downloadBtn.disabled = true;
+    status.textContent = "Ready for a new recording.";
+    state.classList.remove("done");
+    state.textContent = "Not recorded yet";
+    updateProgress();
+  }
+
+  if (action === "download" && recorded[key]) {
+    const a = document.createElement("a");
+    a.href = recorded[key].url;
+    a.download = recorded[key].filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    status.textContent = "Download started.";
+  }
+}
+
+renderQuestions();
+</script>
+</body>
+</html>
